@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Monthsary!</title>
+  <style>
+    body {
+      font-family: 'cursive', cursive;
+      background-color: #ff1493; /* Dark pink background */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: 4em;
+      color: red;
+      text-align: center;
+      margin-bottom: 20px;
+      animation: blinkText 1s ease-in-out infinite;
+    }
+
+    @keyframes blinkText {
+      0%, 50% { color: red; }
+      25%, 75% { color: transparent; }
+    }
+
+    .flower-gif {
+      width: 120px;
+      height: 120px;
+      background-image: url('bouquet.gif');
+      background-size: cover;
+      background-position: center;
+      animation: moveFlower 3s infinite alternate;
+      margin-bottom: 20px;
+    }
+
+    @keyframes moveFlower {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(20px); }
+    }
+
+    .timer {
+      font-size: 2em;
+      color: white;
+      margin-bottom: 20px;
+    }
+
+    .digital {
+      font-size: 2em;
+      margin-top: 10px;
+      color: blue;
+      animation: colorChange 1s infinite alternate;
+    }
+
+    @keyframes colorChange {
+      0% { color: blue; }
+      100% { color: red; }
+    }
+
+    .icon-message {
+      width: 120px;
+      height: 120px;
+      background-image: url('love-letter.gif');
+      background-size: cover;
+      background-position: center;
+      margin-bottom: 20px;
+      animation: moveIcon 3s infinite alternate;
+    }
+
+    @keyframes moveIcon {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(20px); }
+    }
+
+    .button {
+      background-color: #ff69b4; /* Hot pink */
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      font-size: 1.5em;
+      cursor: pointer;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      transition: 0.3s;
+    }
+
+    .button:hover {
+      background-color: #ff1493; /* Darker pink on hover */
+    }
+
+    footer {
+      position: absolute;
+      bottom: 8px;
+      font-size: 1.2em;
+      color: white;
+    }
+
+    .hidden-images {
+      display: none;
+      margin-top: 20px;
+    }
+
+    .hidden-images img {
+      width: 100px;
+      height: 100px;
+      animation: reveal 4s ease-in-out both, moveSide 3s infinite alternate, blink 1s infinite;
+    }
+
+    @keyframes moveSide {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(20px); }
+    }
+
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      25%, 75% { opacity: 0; }
+    }
+
+    /* Falling hearts */
+    .heart {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background-image: url('https://tenor.com/view/love-gif-falling-hearts-gif-14234874592784199563'); /* Replace with heart image */
+      background-size: cover;
+      animation: fall 5s infinite linear;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(-100px); opacity: 1; }
+      100% { transform: translateY(100vh); opacity: 0; }
+    }
+
+    .heart:nth-child(1) { left: 10%; animation-duration: 4s; }
+    .heart:nth-child(2) { left: 30%; animation-duration: 6s; }
+    .heart:nth-child(3) { left: 50%; animation-duration: 7s; }
+    .heart:nth-child(4) { left: 70%; animation-duration: 5s; }
+    .heart:nth-child(5) { left: 90%; animation-duration: 8s; }
+
+    /* Rotating star */
+    .star {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 80px;
+      height: 80px;
+      background-image: url(''); /* Replace with star image */
+      background-size: cover;
+      animation: rotateStar 4s infinite linear, moveStar 10s infinite alternate;
+    }
+
+    @keyframes rotateStar {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes moveStar {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(300px); }
+    }
+
+    /* Pop-up message */
+    .popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: white;
+      padding: 20px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+      z-index: 999;
+    }
+
+    .popup .close-btn {
+      background-color: red;
+      color: white;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1 id="monthsaryText">HAPPY MONTHSARY</h1>
+
+  <div class="flower-gif"></div>
+
+  <div class="timer">
+    <span>Countdown to: September 23, 2024</span>
+    <div class="digital" id="digitalTimer"></div>
+  </div>
+
+  <div class="icon-message"></div>
+
+  <button class="button" id="openMessageButton">Open the message for you</button>
+
+  <div class="hidden-images" id="hiddenImages">
+    <img src="img1.jpg" alt="Image 1">
+    <img src="im2.jpg" alt="Image 2">
+    <img src="img3.jpg" alt="Image 3">
+  </div>
+
+  <footer>© 2024 Joshua. All rights reserved.</footer>
+
+  <!-- Falling hearts -->
+  <div class="heart"></div>
+  <div class="heart"></div>
+  <div class="heart"></div>
+  <div class="heart"></div>
+  <div class="heart"></div>
+
+  <!-- Rotating star -->
+  <div class="star"></div>
+
+  <!-- Pop-up message -->
+  <div class="popup" id="popupMessage">
+    <p>Surprise! I love you!🥺</p>
+    <button class="close-btn" id="closePopupButton">Close</button>
+  </div>
+
+  <audio id="buttonSound" src="https://www.soundjay.com/button/sounds/button-09.mp3" preload="auto"></audio>
+
+
+  <script>
+    const eventDate = new Date('September 23, 2024 00:00:00');
+    const timerInterval = setInterval(updateTime, 1000);
+    const blinkTimeout = setTimeout(stopBlinking, 500000); 
+
+    function updateTime() {
+      const currentDate = new Date();
+      const diff = eventDate - currentDate;
+      const timerElement = document.getElementById('digitalTimer');
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      timerElement.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+      if (diff < 0) {
+        clearInterval(timerInterval);
+        timerElement.textContent = "Happy Monthsary!";
+      }
+
+      document.getElementById('tickSound').play();
+    }
+
+    function stopBlinking() {
+      const monthsaryText = document.getElementById('monthsaryText');
+      monthsaryText.style.animation = 'none';
+    }
+
+    document.getElementById('openMessageButton').addEventListener('click', function() {
+      document.getElementById('buttonSound').play();
+      document.getElementById('hiddenImages').style.display = 'block';
+
+      setTimeout(function() {
+        window.location.href = 'monthsary.html'; 
+      }, 6000);
+    });
+
+  
+    document.getElementById('openMessageButton').addEventListener('click', function() {
+      document.getElementById('popupMessage').style.display = 'block';
+    });
+
+    document.getElementById('closePopupButton').addEventListener('click', function() {
+      document.getElementById('popupMessage').style.display = 'none';
+    });
+  </script>
+</body>
+</html>

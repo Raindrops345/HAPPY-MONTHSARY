@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Surprise</title>
+  <style>
+    body {
+      font-family: 'cursive', cursive;
+      background-color: #d10075; 
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+      color: white;
+      position: relative; /* Ensure proper positioning of footer and button */
+    }
+
+    h1 {
+      font-size: 4em;
+      color: white;
+      animation: blinkText 1.5s ease-in-out infinite;
+    }
+
+    @keyframes blinkText {
+      0%, 50% { color: white; }
+      25%, 75% { color: transparent; }
+    }
+
+    .message {
+      font-size: 1.5em;
+      max-width: 900px;
+      margin: 20px;
+      line-height: 1.8;
+    }
+
+    /* Floating images */
+    .floating-images {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+      position: relative;
+    }
+
+    .floating-images img {
+      width: 100px;
+      height: 100px;
+      margin: 0 10px;
+      animation: float 1s infinite ease-in-out alternate;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+      border-radius: 50%;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-20px); }
+    }
+
+    .play-button {
+      background-color: #ff1493;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      font-size: 1.5em;
+      cursor: pointer;
+      border-radius: 5px;
+      margin-top: 20px;
+      margin-bottom: 60px; /* Added margin to ensure distance from footer */
+      transition: 0.3s;
+      position: relative;
+      z-index: 1; /* Ensure the button is above the footer */
+    }
+
+    .play-button:hover {
+      background-color: #ff0066;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 0;
+      font-size: 1.2em;
+      color: white;
+      width: 100%;
+      text-align: center;
+      padding-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1 id="messageTitle">My Message</h1>
+
+  <div class="message">
+    Hello ma first of all i just to say a happy monthsary to us, i love you and i miss you so much ma:< you know what? i'm wrote this message for you. to express how much i love you/ even you are so busy but i want your lambing ma so please can you give me, i understand about your situation. if you know lang what i felt in every night when i missed you, sad, uncomplete akoang night if without you. hoping ma feel pud nimo akoang presence of love, even layo ta sa usag usa. again ma i want you to hug tight and kiss, cause i'm missing you. this time i expected nga hoping ma appreciate nimo even in a small things, i love you so much ma.. 
+  </div>
+
+  <div class="floating-images">
+    <img src="lab1.jpg" alt="Floating Image 1">
+    <img src="lab2.jpg" alt="Floating Image 2">
+    <img src="lab3.jpg" alt="Floating Image 3">
+    <img src="lab4.jpg" alt="Floating Image 4">
+    <img src="lab5.jpg" alt="Floating Image 5">
+  </div>
+
+  <button class="play-button" id="playButton">Play</button>
+
+  <footer>CREATED BY: JOSHUA BARTOLOME | All Rights Reserved 2024</footer>
+
+  <!-- Audio -->
+  <audio id="backgroundAudio" src="forever.mp3" preload="auto"></audio>
+
+  <script>
+    // Blinking effect for "My Message"
+    const messageTitle = document.getElementById('messageTitle');
+    messageTitle.style.animation = 'blinkText 1.5s ease-in-out infinite';
+
+    const playButton = document.getElementById('playButton');
+    const backgroundAudio = document.getElementById('backgroundAudio');
+
+    playButton.addEventListener('click', function() {
+      backgroundAudio.play();
+    });
+  </script>
+
+</body>
+</html>
